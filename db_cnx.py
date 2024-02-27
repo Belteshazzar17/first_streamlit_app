@@ -6,7 +6,7 @@ from urllib.error import URLError
 
 
 # Initialize connection.
-conn = streamlit.connection("snowflake")
+conn = streamlit.connection(**st.secrets["snowflake"])
 
 # Perform query.
 df = conn.query("SELECT * from PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST;", ttl=600)
