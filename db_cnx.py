@@ -4,10 +4,6 @@ import requests
 import snowflake.connector
 from urllib.error import URLError
 
-
-# Initialize connection.
-conn = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-
 # Perform query.
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
