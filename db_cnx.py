@@ -9,10 +9,12 @@ from urllib.error import URLError
 conn = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 
 # Perform query.
-df = conn.query("SELECT current_date() as Today;", ttl=600)
-
-# Print results.
-st.write(df)
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_cnx.cursor()
+my_cur.execute("SELECT current_date()")
+my_data_row = my_cur.fetchone()
+streamlit.text("Hello from Snowflake:")
+streamlit.text(my_data_row)
 
 # my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 # my_cur = my_cnx.cursor()
