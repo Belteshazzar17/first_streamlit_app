@@ -6,10 +6,10 @@ from urllib.error import URLError
 
 
 # Initialize connection.
-conn = streamlit.connection(**st.secrets["snowflake"])
+conn = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 
 # Perform query.
-df = conn.query("SELECT * from PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST;", ttl=600)
+df = conn.query("SELECT current_date() as Today;", ttl=600)
 
 # Print results.
 st.write(df)
